@@ -18,4 +18,4 @@ GIVEN a command-line application that accepts user input:
 ![Screenshot](https://github.com/vanessalane/team-profile-generator/blob/master/generated_profile_screenshot.png)
 
 ## Screen Recording
-[Screen Recording](https://drive.google.com/file/d/18_6-BdsgGdE9ZMrPUpb0M0-WS3kDmd9b/view)
+[Screen Recording](https://drive.google.com/file/d/1AxoZIG0q7j_780WXXv3tgOUGGTDD8nxC/view)
