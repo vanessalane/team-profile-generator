@@ -151,7 +151,7 @@ function promptForEmployee() {
                 console.log(`
   Got it. Let's add an ${employeeType}.
 `)
-                inquirer
+                return inquirer
                     .prompt(getEmployeePrompts(employeeType))
                     .then((answers) => {createEmployee(employeeType, answers)})
                     .then(promptForEmployee);
@@ -174,4 +174,4 @@ function buildTeam() {
 buildTeam()
     .then(teamMembers => generateContent(teamMembers))
     .then(pageHTML => writeFile(pageHTML))
-    .then(writeFileResponse => console.log(writeFileResponse));
+    .then(writeFileResponse => console.log(writeFileResponse.message));

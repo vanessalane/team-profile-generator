@@ -10,7 +10,7 @@ const writeFile = (fileContent) => {
 
             resolve({
                 ok: true,
-                message: 'Generated your portfolio!'
+                message: 'Generated the team page at /dist/index.html!'
             });
         });
     });

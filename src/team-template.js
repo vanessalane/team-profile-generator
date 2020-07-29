@@ -6,7 +6,7 @@ const generateEmployeeCard = (employee) => {
     let employeeSpecificData;
     switch (employee.title) {
         case 'Engineer':
-            employeeSpecificData = `<p class="card-text">GitHub: <a href="https://www.github.com/${employee.github}" class="card-link">${employee.github}</a></p>`;
+            employeeSpecificData = `<p class="card-text">GitHub: <a href="https://www.github.com/${employee.github}" target="_blank" class="card-link">${employee.github}</a></p>`;
             break;
         case 'Intern':
             employeeSpecificData =`<p class="card-text">${employee.school}</p>`
@@ -19,26 +19,28 @@ const generateEmployeeCard = (employee) => {
     }
 
     return `
-    <div class="col mb-4">
-        <div class="card h-100 ">
-            <div class="card-header">
-                <h4>${employee.name}</h4>
-                <p class="card-text">${employee.title}</p>
+            <div class="col mb-4">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h4>${employee.name}</h4>
+                        <p class="card-text">${employee.title}</p>
+                    </div>
+                    <div class="card-body font-weight-light">
+                        <p><a href="mailto:${employee.email}" class="card-link">${employee.email}</a></p>
+                        <p class="card-text">Employee ID: ${employee.id}</p>
+                        ${employeeSpecificData}
+                    </div>
+                </div>
             </div>
-            <div class="card-body font-weight-light">
-                <p><a href="mailto:${employee.email}" class="card-link">${employee.email}</a></p>
-                <p class="card-text">Employee ID: ${employee.id}</p>
-                ${employeeSpecificData}
-            </div>
-        </div>
-    </div>
-    `
+            `
 }
 
 const generatePageContent = employees => {
+    let pageHTML = '';
     for (let i=0; i < employees.length; i++) {
-        generateEmployeeCard(employees[i]);
+        pageHTML += generateEmployeeCard(employees[i])
     }
+    return pageHTML
 }
 
 module.exports = employeeData => {
@@ -64,8 +66,9 @@ module.exports = employeeData => {
         <div class="container font-weight-light">
             
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
-                ${generatePageContent(employeeData)};
+                ${generatePageContent(employeeData)}
             </div>
+
         </div>
     </main>
 </body>
