@@ -13,3 +13,9 @@ GIVEN a command-line application that accepts user input:
 - WHEN I select the engineer option THEN I am prompted to enter the engineer’s name, ID, email, and GitHub username, and I am taken back to the menu
 - WHEN I select the intern option THEN I am prompted to enter the intern’s name, ID, email, and school, and I am taken back to the menu
 - WHEN I decide to finish building my team THEN I exit the application, and the HTML is generated
+
+## Screenshot
+![Screenshot](https://github.com/vanessalane/team-profile-generator/blob/master/generated_profile_screenshot.png)
+
+## Screen Recording
+[Screen Recording](https://drive.google.com/file/d/1DGWlzf9vkoY3MknXizGpUyPqisbeZo6W/preview)
