@@ -10,7 +10,7 @@ const writeFile = (fileContent) => {
 
             resolve({
                 ok: true,
-                message: 'Generated the team page at /dist/index.html!'
+                message: 'Generated the team page in dist/index.html!'
             });
         });
     });

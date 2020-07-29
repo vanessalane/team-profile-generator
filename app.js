@@ -3,14 +3,12 @@ const inquirer = require('inquirer');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
-const generateContent = require('./src/team-template');
-const writeFile = require('./utils/generate-site');
+const generateContent = require('./src/generate-content');
+const writeFile = require('./utils/write-file');
 
-let teamMembers = [];
+let employees = [];
 
 function getEmployeePrompts(employeeType) {
-
-    // define prompts for all employees
     const prompts = [
         {
             type: 'text',
@@ -55,7 +53,6 @@ function getEmployeePrompts(employeeType) {
         }
     ]
 
-    // define prompts for specific employee types
     const typeSpecificPrompts = {
         'engineer': {
             type: 'text',
@@ -99,7 +96,8 @@ function getEmployeePrompts(employeeType) {
     };
 
     // add the specific prompt to the prompts that should be used for this type of employee
-    prompts.push(typeSpecificPrompts[employeeType]);
+    const additionalPrompt = typeSpecificPrompts[employeeType];
+    prompts.push(additionalPrompt);
     return prompts;
 }
 
@@ -115,17 +113,17 @@ function createEmployee(employeeType, employeeDetails) {
         case 'engineer':
             const github = employeeDetails.github;
             const engineer = new Engineer(name, email, id, github);
-            teamMembers.push(engineer);
+            employees.push(engineer);
             break;
         case 'manager':
             const office = employeeDetails.office;
             const manager = new Manager(name, email, id, office);
-            teamMembers.push(manager);
+            employees.push(manager);
             break;
         case 'intern':
             const school = employeeDetails.school;
             const intern = new Intern(name, email, id, school);
-            teamMembers.push(intern);
+            employees.push(intern);
             break;
         default:
             break;
@@ -145,7 +143,7 @@ function promptForEmployee() {
         })
         .then(({nextAction}) => {
             if (nextAction === 'Finish building my team') {
-                return teamMembers;
+                return employees;
             } else {
                 const employeeType = nextAction.replace('Add an ', '');
                 console.log(`
@@ -172,6 +170,6 @@ function buildTeam() {
 }
 
 buildTeam()
-    .then(teamMembers => generateContent(teamMembers))
+    .then(employees => generateContent(employees))
     .then(pageHTML => writeFile(pageHTML))
     .then(writeFileResponse => console.log(writeFileResponse.message));
