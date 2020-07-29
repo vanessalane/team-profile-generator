@@ -146,7 +146,7 @@ function promptForEmployee() {
         })
         .then(({nextAction}) => {
             if (nextAction === 'Finish building my team') {
-                return employees
+                return employees;
             } else {
                 const employeeType = nextAction.replace('Add an ', '');
                 console.log(`
