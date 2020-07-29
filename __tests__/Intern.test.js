@@ -11,3 +11,13 @@ test('creates an Intern object that inherits from Employee', () => {
     // intern-specific attr
     expect(intern.school).toBe('UC Berkeley');
 })
+
+test('getRole() returns the role', () => {
+    const intern = new Intern('Vanessa Lane', 'vlane0593@gmail.com', 'GHI', 'UC Berkeley');
+    expect(intern.getRole()).toBe('Intern');
+})
+
+test('getSchool() returns the school', () => {
+    const intern = new Intern('Vanessa Lane', 'vlane0593@gmail.com', 'GHI', 'UC Berkeley');
+    expect(intern.getSchool()).toBe('UC Berkeley');
+})

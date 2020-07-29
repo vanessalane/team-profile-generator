@@ -8,13 +8,13 @@ const generateEmployeeCard = employee => {
     let additionalInfo = '';
     switch (employee.getRole()) {
         case 'Engineer':
-            additionalInfo = `<p class="card-text">GitHub: <a href="https://www.github.com/${employee.github}" target="_blank" class="card-link">${employee.github}</a></p>`;
+            additionalInfo = `<p class="card-text">GitHub: <a href="https://www.github.com/${employee.getGithub()}" target="_blank" class="card-link">${employee.getGithub()}</a></p>`;
             break;
         case 'Intern':
-            additionalInfo =`<p class="card-text">${employee.school}</p>`
+            additionalInfo =`<p class="card-text">${employee.getSchool()}</p>`
             break;
         case 'Manager':
-            additionalInfo =`<p class="card-text">Office: ${employee.office}</p>`
+            additionalInfo =`<p class="card-text">Office: ${employee.getOffice()}</p>`
             break;
         default:
             break;
@@ -25,12 +25,12 @@ const generateEmployeeCard = employee => {
                 <div class="col mb-4">
                     <div class="card h-100">
                         <div class="card-header">
-                            <h4>${employee.name}</h4>
+                            <h4>${employee.getName()}</h4>
                             <p class="card-text">${employee.getRole()}</p>
                         </div>
                         <div class="card-body font-weight-light">
-                            <p><a href="mailto:${employee.email}" class="card-link">${employee.email}</a></p>
-                            <p class="card-text">Employee ID: ${employee.id}</p>
+                            <p><a href="mailto:${employee.getEmail()}" class="card-link">${employee.getEmail()}</a></p>
+                            <p class="card-text">Employee ID: ${employee.getId()}</p>
                             ${additionalInfo}
                         </div>
                     </div>

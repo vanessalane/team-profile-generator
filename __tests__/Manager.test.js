@@ -11,3 +11,13 @@ test('creates a Manager object that inherits from Employee', () => {
     // test manager-specific attributes
     expect(manager.office).toBe(1);
 })
+
+test('getRole() returns the role', () => {
+    const manager = new Manager('Vanessa Lane', 'vlane0593@gmail.com', 'ABC', 1);
+    expect(manager.getRole()).toBe('Manager');
+})
+
+test('getOffice() returns the office number', () => {
+    const manager = new Manager('Vanessa Lane', 'vlane0593@gmail.com', 'ABC', 1);
+    expect(manager.getOffice()).toBe(1);
+})
