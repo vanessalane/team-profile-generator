@@ -11,7 +11,7 @@ let employees = [];
 function getEmployeePrompts(employeeType) {
     const prompts = [
         {
-            type: 'text',
+            type: 'input',
             name: 'name',
             message: "What's their name?",
             validate: nameInput => {
@@ -24,7 +24,7 @@ function getEmployeePrompts(employeeType) {
             }
         },
         {
-            type: 'text',
+            type: 'input',
             name: 'email',
             message: "What's their email?",
             validate: emailInput => {
@@ -39,7 +39,7 @@ function getEmployeePrompts(employeeType) {
             }
         },
         {
-            type: 'text',
+            type: 'input',
             name: 'id',
             message: "What's their employee ID?",
             validate: idInput => {
@@ -55,7 +55,7 @@ function getEmployeePrompts(employeeType) {
 
     const typeSpecificPrompts = {
         'engineer': {
-            type: 'text',
+            type: 'input',
             name: 'github',
             message: "What's their github username?",
             validate: githubInput => {
@@ -68,7 +68,7 @@ function getEmployeePrompts(employeeType) {
             }
         },
         'intern': {
-            type: 'text',
+            type: 'input',
             name: 'school',
             message: "What school do they attend?",
             validate: schoolInput => {
@@ -81,15 +81,18 @@ function getEmployeePrompts(employeeType) {
             }
         },
         'manager': {
-            type: 'text',
+            type: 'input',
             name: 'office',
             message: "What's their office number?",
-            validate: officeNumberInput => {
-                if (officeNumberInput) {
-                    return true;
+            validate: officeInput => {
+                if (!officeInput) {
+                    return 'Please enter an office number.';
+                }
+                else if (isNaN(officeInput)) {
+                    return 'The office number needs to be a number.';
                 }
                 else {
-                    return 'Please specify an office number.';
+                    return true;
                 }
             }
         }
@@ -143,7 +146,7 @@ function promptForEmployee() {
         })
         .then(({nextAction}) => {
             if (nextAction === 'Finish building my team') {
-                return employees;
+                return employees
             } else {
                 const employeeType = nextAction.replace('Add an ', '');
                 console.log(`

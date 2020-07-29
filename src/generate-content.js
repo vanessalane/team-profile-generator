@@ -6,7 +6,7 @@ const generateEmployeeCard = employee => {
 
     // if there's employee data, figure out specific info to include based on the employee type
     let additionalInfo = '';
-    switch (employee.title) {
+    switch (employee.getRole()) {
         case 'Engineer':
             additionalInfo = `<p class="card-text">GitHub: <a href="https://www.github.com/${employee.github}" target="_blank" class="card-link">${employee.github}</a></p>`;
             break;
@@ -26,7 +26,7 @@ const generateEmployeeCard = employee => {
                     <div class="card h-100">
                         <div class="card-header">
                             <h4>${employee.name}</h4>
-                            <p class="card-text">${employee.title}</p>
+                            <p class="card-text">${employee.getRole()}</p>
                         </div>
                         <div class="card-body font-weight-light">
                             <p><a href="mailto:${employee.email}" class="card-link">${employee.email}</a></p>
