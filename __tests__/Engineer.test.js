@@ -11,3 +11,13 @@ test('creates an Engineer object that inherits from Employee', () => {
     // engineer-specific attr
     expect(engineer.github).toBe('vanessalane');
 })
+
+test('getRole() returns the role', () => {
+    const engineer = new Engineer('Vanessa Lane', 'vlane0593@gmail.com', 'ABC');
+    expect(engineer.getRole()).toBe('Engineer');
+})
+
+test('getGithub() returns the github username', () => {
+    const engineer = new Engineer('Vanessa Lane', 'vlane0593@gmail.com', 'ABC', 'vanessalane');
+    expect(engineer.getGithub()).toBe('vanessalane');
+})
