@@ -21,9 +21,10 @@ A Node app that can be used to generate a website that displays employees on a t
 ## Testing
 To test, run `npm test`
 
-## Packages
+## Packages/Frameworks
 - [Jest](https://www.npmjs.com/package/jest)
 - [Inquirer](https://www.npmjs.com/package/inquirer)
+- [Bootstrap](https://getbootstrap.com/)
 
 ## Questions
 If you have questions, email me at [vlane0593@gmail.com](mailto:vlane0593@gmail.com) or reach out on [GitHub](https://www.github.com/vanessalane).
